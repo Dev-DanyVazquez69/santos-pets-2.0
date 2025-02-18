@@ -1,9 +1,9 @@
-import { ModeToggle } from "@/components/ui/mode-toggle";
+import Header from "@/components/header";
 
 export default function Home() {
   return (
-    <>
-      <ModeToggle />
-    </>
+    <main className="p-5">
+      <Header/>
+    </main>
   );
 }
