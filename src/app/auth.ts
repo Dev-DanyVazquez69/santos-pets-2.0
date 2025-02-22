@@ -2,6 +2,8 @@ import NextAuth, { type DefaultSession } from "next-auth"
 import Google from "next-auth/providers/google"
 import Credentials from "next-auth/providers/credentials"
 import type { Provider } from "next-auth/providers"
+import { signInSchema } from "@/schema/signin"
+import { ZodError } from "zod"
 
 const providers: Provider[] = [
   Credentials({
@@ -12,21 +14,29 @@ const providers: Provider[] = [
 
     authorize: async (credentials) => {
 
-      const user = {
-        email: "daniel@santosPets.com",
-        name: "Daniel Santos",
-      };
+      try {
+        const user = {
+          email: "daniel@santosPets.com",
+          name: "Daniel Santos",
+        };
 
-      const email = credentials.email as string;
-      const password = credentials.password as string;
+        const { email, password } = await signInSchema.parseAsync(credentials)
 
-      if (!email || !password)
-        return null;
+        if (!email || !password)
+          return null;
 
-      if (email !== "daniel@santosPets.com" || password !== "Dany526@")
-        return null;
+        if (email !== "daniel@santosPets.com" || password !== "Dany526@")
+          return null;
 
-      return user;
+        return user;
+
+      } catch (error) {
+        if (error instanceof ZodError) {
+          // Return `null` to indicate that the credentials are invalid
+          return null
+        }
+        return null
+      }
     }
   }),
   Google]
