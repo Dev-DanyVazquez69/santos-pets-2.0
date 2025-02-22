@@ -15,16 +15,16 @@ const providers: Provider[] = [
       const user = {
         email: "daniel@santosPets.com",
         name: "Daniel Santos",
-      }
+      };
 
-      const email = credentials.email as string
-      const password = credentials.password as string
+      const email = credentials.email as string;
+      const password = credentials.password as string;
 
       if (!email || !password)
-        throw new Error("credentials required")
+        return null;
 
-      if (email !== "daniel@santosPets.com" || password !== "123456")
-        throw new Error("invalid credentials")
+      if (email !== "daniel@santosPets.com" || password !== "Dany526@")
+        return null;
 
       return user;
     }
@@ -67,5 +67,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   session: {
     strategy: "jwt"
   },
-  providers
+  providers,
+  pages: {
+    signIn: "/signin",
+    error: "/error",
+    signOut: "/signout"
+  },
 })
