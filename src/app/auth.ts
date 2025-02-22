@@ -1,52 +1,71 @@
 import NextAuth, { type DefaultSession } from "next-auth"
 import Google from "next-auth/providers/google"
 import Credentials from "next-auth/providers/credentials"
+import type { Provider } from "next-auth/providers"
+
+const providers: Provider[] = [
+  Credentials({
+    credentials: {
+      email: { label: "Email", type: "text" },
+      password: { label: "Password", type: "password" },
+    },
+
+    authorize: async (credentials) => {
+
+      const user = {
+        email: "daniel@santosPets.com",
+        name: "Daniel Santos",
+      }
+
+      const email = credentials.email as string
+      const password = credentials.password as string
+
+      if (!email || !password)
+        throw new Error("credentials required")
+
+      if (email !== "daniel@santosPets.com" || password !== "123456")
+        throw new Error("invalid credentials")
+
+      return user;
+    }
+  }),
+  Google]
+
+export const providerMap = providers
+  .map((provider) => {
+    if (typeof provider === "function") {
+      const providerData = provider()
+      return { id: providerData.id, name: providerData.name }
+    } else {
+      return { id: provider.id, name: provider.name }
+    }
+  })
+  .filter((provider) => provider.id !== "credentials")
 
 declare module "next-auth" {
-  /**
-   * Returned by `auth`, `useSession`, `getSession` and received as a prop on the `SessionProvider` React Context
-   */
   interface Session {
     user: {
-      /** The user's postal address. */
-      address: string
-      /**
-       * By default, TypeScript merges new interface properties and overwrites existing ones.
-       * In this case, the default session user properties will be overwritten,
-       * with the new ones defined above. To keep the default session user properties,
-       * you need to add them back into the newly declared interface.
-       */
+      id: string
+
     } & DefaultSession["user"]
   }
 }
 
 export const { handlers, signIn, signOut, auth } = NextAuth({
-  providers: [
-    Credentials({
-      credentials: {
-        email: { label: "Email", type: "text" },
-        password: { label: "Password", type: "password" },
-      },
-
-      authorize: async (credentials) => {
-
-        const user = {
-          email: "daniel@santosPets.com",
-          name: "Daniel Santos",
-        }
-
-        const email = credentials.email as string
-        const password = credentials.password as string
-
-        if (!email || !password)
-          throw new Error("credentials required")
-
-        if (email !== "daniel@santosPets.com" || password !== "123456")
-          throw new Error("invalid credentials")
-
-        return user;
-      }
-    }),
-    Google],
-
+  callbacks: {
+    authorized: async ({ auth }) => {
+      return !!auth
+    },
+    jwt({ token }) {
+      return token
+    },
+    session({ session, token }) {
+      session.user.id = token.sub as string
+      return session
+    },
+  },
+  session: {
+    strategy: "jwt"
+  },
+  providers
 })
