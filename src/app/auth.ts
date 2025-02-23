@@ -4,6 +4,9 @@ import Credentials from "next-auth/providers/credentials"
 import type { Provider } from "next-auth/providers"
 import { signInSchema } from "@/schema/signin"
 import { ZodError } from "zod"
+import { PrismaAdapter } from "@auth/prisma-adapter"
+import { prisma } from "@/lib/prisma"
+import { compareSync } from "bcryptjs"
 
 const providers: Provider[] = [
   Credentials({
@@ -15,24 +18,28 @@ const providers: Provider[] = [
     authorize: async (credentials) => {
 
       try {
-        const user = {
-          email: "daniel@santosPets.com",
-          name: "Daniel Santos",
-        };
 
         const { email, password } = await signInSchema.parseAsync(credentials)
 
         if (!email || !password)
           return null;
 
-        if (email !== "daniel@santosPets.com" || password !== "Dany526@")
+        const user = await prisma.user.findFirst({
+          where: {
+            email: email
+          },
+        })
+
+        if (!user)
           return null;
+
+        if (!compareSync(password, user.password ?? ""))
+           return null;
 
         return user;
 
       } catch (error) {
         if (error instanceof ZodError) {
-          // Return `null` to indicate that the credentials are invalid
           return null
         }
         return null
@@ -77,6 +84,7 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
   session: {
     strategy: "jwt"
   },
+  adapter: PrismaAdapter(prisma),
   providers,
   pages: {
     signIn: "/signin",

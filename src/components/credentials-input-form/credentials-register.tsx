@@ -66,7 +66,7 @@ const CredentialsRegisterForm: React.FC = () => {
         {
                 state &&
                 <div className='bg-red-600 p-1 rounded-3xl'>
-                    <p className="text-xs text-center font-extrabold">{state.message}</p>
+                    <p className="text-xs text-center text-background font-extrabold">{state.message}</p>
                 </div>
 
             }
