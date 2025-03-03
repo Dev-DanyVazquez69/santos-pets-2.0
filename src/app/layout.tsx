@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ui/theme-provider"
 
-
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -30,7 +29,7 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Santos Pets" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased p-5 md:p-10 min-h-screen flex flex-col`}
       >
         <ThemeProvider
           attribute="class"
