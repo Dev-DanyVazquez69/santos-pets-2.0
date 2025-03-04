@@ -47,7 +47,12 @@ const Header: React.FC = () => {
                         <AvatarFallback>CN</AvatarFallback>
                     </Avatar>
                 </Link>
-                <div className="hidden lg:flex">
+                <div className="hidden lg:flex gap-2">
+                    <Link
+                        href={"/signout"}
+                        className="p-2 bg-foreground">
+                        Signout
+                    </Link>
                     <ModeToggle />
                 </div>
             </div>
@@ -59,13 +64,18 @@ const Header: React.FC = () => {
                     <SheetContent>
                         <SheetHeader>
                             <SheetTitle>Menu</SheetTitle>
-                            <SheetDescription>
+                            <SheetDescription className="text-foreground">
                                 <div className="flex flex-col gap-4 mt-5">
                                     {links.map((link, index) => (
                                         <SheetClose asChild key={index}>
-                                            <Link className="text-foreground" href={link.href}>{link.name}</Link>
+                                            <Link href={link.href}>{link.name}</Link>
                                         </SheetClose>
                                     ))}
+
+                                    <Link
+                                        href={"/signout"}>
+                                        Signout 
+                                    </Link>
                                     <ModeToggle />
                                 </div>
                             </SheetDescription>

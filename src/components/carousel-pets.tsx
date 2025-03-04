@@ -4,6 +4,8 @@ import {
     Carousel,
     CarouselContent,
     CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
 } from "@/components/ui/carousel"
 import { Avatar, AvatarFallback, AvatarImage } from "./ui/avatar"
 
@@ -21,7 +23,7 @@ const CarouselPets: React.FC = () => {
                     {listPets.map((cat, index) => (
                         <CarouselItem key={index}>
                             <div className="p-1 flex flex-col justify-center items-center gap-5">
-                                <Avatar className="w-20 h-20">
+                                <Avatar className="w-32 h-32">
                                     <AvatarImage src={cat.image} alt="icon" />
                                     <AvatarFallback>{cat.name}</AvatarFallback>
                                 </Avatar>
@@ -30,6 +32,8 @@ const CarouselPets: React.FC = () => {
                         </CarouselItem>
                     ))}
                 </CarouselContent>
+                <CarouselPrevious className="bg-foreground text-background border-none"/>
+                <CarouselNext className="bg-foreground text-background border-none"/>
             </Carousel>
         </div>
     )
