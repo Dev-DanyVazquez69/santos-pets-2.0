@@ -23,17 +23,17 @@ const CarouselPets: React.FC = () => {
                     {listPets.map((cat, index) => (
                         <CarouselItem key={index}>
                             <div className="p-1 flex flex-col justify-center items-center gap-5">
-                                <Avatar className="w-32 h-32">
+                                <Avatar className="w-full h-full border-4 border-background">
                                     <AvatarImage src={cat.image} alt="icon" />
                                     <AvatarFallback>{cat.name}</AvatarFallback>
                                 </Avatar>
-                                <p className="font-bold text-2xl text-foreground">{cat.name}</p>
+                                <p className="font-bold text-2xl text-black">{cat.name}</p>
                             </div>
                         </CarouselItem>
                     ))}
                 </CarouselContent>
-                <CarouselPrevious className="bg-foreground text-background border-none"/>
-                <CarouselNext className="bg-foreground text-background border-none"/>
+                <CarouselPrevious className="bg-background text-foreground border-none"/>
+                <CarouselNext className="bg-background text-foreground border-none"/>
             </Carousel>
         </div>
     )

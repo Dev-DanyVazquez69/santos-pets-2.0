@@ -59,7 +59,7 @@ const Header: React.FC = () => {
             <div className="flex lg:hidden">
                 <Sheet>
                     <SheetTrigger>
-                        <Menu />
+                        <Menu className="text-black"/>
                     </SheetTrigger>
                     <SheetContent>
                         <SheetHeader>

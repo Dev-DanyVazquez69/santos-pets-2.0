@@ -5,7 +5,7 @@ import Link from "next/link";
 
 export default function Home() {
 
-  const styleLink = "border border-foreground bg-foreground flex flex-grow rounded-xl items-center justify-center gap-2";
+  const styleLink = "border border-background bg-background flex flex-grow rounded-xl items-center justify-center gap-2";
 
   return (
     <>

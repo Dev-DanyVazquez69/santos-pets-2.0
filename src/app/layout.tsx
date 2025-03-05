@@ -31,7 +31,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-[url(/background.png)] bg-center bg-contain`}
       >
-        <div className="display flex flex-col flex-1 bg-black/50 p-5 md:p-10">
+        <div className="display flex flex-col flex-1 dark:bg-black/50 p-5 md:p-10">
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
