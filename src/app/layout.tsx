@@ -29,9 +29,9 @@ export default function RootLayout({
         <meta name="apple-mobile-web-app-title" content="Santos Pets" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col bg-[url(/background.png)] bg-center bg-contain`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
-        <div className="display flex flex-col flex-1 dark:bg-black/50 p-5 md:p-10">
+        
           <ThemeProvider
             attribute="class"
             defaultTheme="system"
@@ -40,7 +40,6 @@ export default function RootLayout({
           >
             {children}
           </ThemeProvider>
-        </div>
       </body>
     </html>
   );

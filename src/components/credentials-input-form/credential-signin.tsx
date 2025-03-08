@@ -21,7 +21,7 @@ const CredentialsLoginForm: React.FC = () => {
                     className="flex flex-col items-start justify-center">
                     Email
                     <input
-                        className="text-foreground p-2 bg-transparent focus:outline-none focus:ring-2 focus:ring-green-400 border-b-2 border-white"
+                        className="text-foreground p-2 bg-white focus:outline-none focus:ring-2 focus:ring-green-400 border-b-2 border-white"
                         placeholder="Insira seu email"
                         name="email"
                         id="email"
@@ -33,7 +33,7 @@ const CredentialsLoginForm: React.FC = () => {
                     className="flex flex-col items-start justify-center">
                     Password
                     <input
-                        className="text-foreground p-2 bg-transparent focus:outline-none focus:ring-2 focus:ring-green-400 border-b-2 border-white"
+                        className="text-foreground p-2 bg-white focus:outline-none focus:ring-2 focus:ring-green-400 border-b-2 border-white"
                         placeholder="Insira sua senha"
                         name="password"
                         id="password"
@@ -45,7 +45,7 @@ const CredentialsLoginForm: React.FC = () => {
                 <button
                     disabled={isPending}
                     type="submit"
-                    className="p-1 bg-foreground font-extrabold border-2 border-background rounded text-background flex gap-2 items-center justify-center text-sm">
+                    className="p-1 bg-primary font-extrabold rounded text-background flex gap-2 items-center justify-center text-sm">
                     Entrar
                     <SendHorizonal />
                 </button>
