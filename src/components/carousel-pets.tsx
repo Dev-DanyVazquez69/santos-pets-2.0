@@ -14,8 +14,8 @@ import { Card, CardContent } from "./ui/card"
 const CarouselPets: React.FC = () => {
 
     const pets: Pets[] = [
-        { id: 2, name: "Omalley", idade: 5, raca: "SRD", cor: "Branco", sexo: "Macho", apelido: "Magrinho", image: "/omalley.jpeg" },
-        { id: 1, name: "Hades", idade: 5, raca: "SRD", cor: "Marrom", sexo: "Macho", apelido: "Gordinho", image: "/hades.jpeg" },
+        { id: 2, name: "Omalley", idade: 5, raca: "SRD", cor: "Branco", sexo: "Macho", apelido: "Magrinho", image: "/omalley.png" },
+        { id: 1, name: "Hades", idade: 5, raca: "SRD", cor: "Marrom", sexo: "Macho", apelido: "Gordinho", image: "/hades.png" },
     ]
 
     const styleLabel = "font-bold text-lg"
