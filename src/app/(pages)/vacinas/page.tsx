@@ -1,3 +1,4 @@
+import ItemVacine from "@/components/item-vacinne";
 import { Card, CardContent } from "@/components/ui/card";
 import { CheckCircle, PlusCircle, XCircle } from "lucide-react";
 
@@ -55,6 +56,7 @@ const Vacina = () => {
                         </CardContent>
                     </Card>
                 ))}
+                <ItemVacine/>
             </div>
             <div className="flex p-5 rounded-lg gap-3 bg-foreground text-background">
                 <p>Adicionar Vacina</p>
