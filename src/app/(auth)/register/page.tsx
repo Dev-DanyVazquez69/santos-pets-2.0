@@ -8,7 +8,7 @@ export default function Register() {
 
     return (
         <>
-            <div className="w-screen h-screen flex gap-10 flex-col items-center justify-center bg-blue">
+            <div className="flex gap-10 flex-col items-center justify-center bg-blue">
                 <h1 className="text-4xl font-extrabold">Santos Petz</h1>
                 <div className="flex flex-col gap-2 md:flex-row md:gap-5  items-center justify-center">
                     <div className="relative w-40 h-40 rounded-full overflow-hidden flex gap-7 items-center justify-center">
