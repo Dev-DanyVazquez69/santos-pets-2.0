@@ -27,6 +27,7 @@ export default function Login() {
                         Ainda não possui conta?
                     </Link>
                     <form
+                        className="flex justify-center items-center"
                         action={async () => {
                             "use server"
                             await signIn("google", { redirectTo: "/" })
