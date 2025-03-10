@@ -50,7 +50,7 @@ const Header: React.FC = () => {
                 <div className="hidden lg:flex gap-2">
                     <Link
                         href={"/signout"}
-                        className="p-2 bg-foreground">
+                        className="p-2 bg-foreground text-background rounded-lg">
                         Signout
                     </Link>
                     <ModeToggle />
@@ -59,7 +59,7 @@ const Header: React.FC = () => {
             <div className="flex lg:hidden">
                 <Sheet>
                     <SheetTrigger>
-                        <Menu className="text-black"/>
+                        <Menu />
                     </SheetTrigger>
                     <SheetContent>
                         <SheetHeader>
@@ -74,7 +74,7 @@ const Header: React.FC = () => {
 
                                     <Link
                                         href={"/signout"}>
-                                        Signout 
+                                        Signout
                                     </Link>
                                     <ModeToggle />
                                 </div>

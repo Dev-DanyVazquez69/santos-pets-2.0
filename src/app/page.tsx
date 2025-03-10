@@ -5,35 +5,28 @@ import Link from "next/link";
 
 export default function Home() {
 
-  const styleLink = "border border-background bg-background flex flex-grow rounded-xl items-center justify-center gap-2";
+  const hoverIcon = "transition-transform duration-200 hover:scale-125"
 
   return (
     <>
       <Header />
-      <section className="flex flex-col flex-grow justify-around items-center p-5">
-        <div className="flex flex-1">
-          <CarouselPets />
-        </div>
-        <div className="flex flex-col flex-1 gap-5 p-5 w-full max-w-lg text-black">
-          <Link href={"/Exames"} className={styleLink}>
-            <CrossIcon />
-            <p className="text-lg hover:text-2xl">Exames</p>
+      <section className="relative flex flex-col flex-grow items-center p-5">
+        <CarouselPets />
+        <div className="flex justify-center items-center gap-5 fixed left-1/2 bottom-5 transform -translate-x-1/2 lg:left-10 lg:top-1/2 lg:flex-col lg:transform -translate-y-1/2 p-4 bg-foreground rounded-full shadow-lg text-background">
+          <Link href={"/vacinas"}>
+            <Syringe width={30} height={30} className={hoverIcon} />
           </Link>
-          <Link href={"/Consultas"} className={styleLink}>
-            <ClipboardPlus />
-            <p className="text-lg hover:text-2xl">Consultas</p>
+          <Link href={"/consultas"}>
+            <ClipboardPlus width={30} height={30} className={hoverIcon} />
           </Link>
-          <Link href={"/vacinas"} className={styleLink}>
-            <Syringe />
-            <p className="text-lg hover:text-2xl">Vacinas</p>
+          <Link href={"/exames"}>
+            <CrossIcon width={30} height={30} className={hoverIcon} />
           </Link>
-          <Link href={"/Meus Pets"} className={styleLink}>
-            <Cat />
-            <p className="text-lg hover:text-2xl">Meus Pets</p>
+          <Link href={"/meus-pets"}>
+            <Cat width={30} height={30} className={hoverIcon} />
           </Link>
-          <Link href={"/Meus Pets"} className={styleLink}>
-            <Settings />
-            <p className="text-lg hover:text-2xl">Configurações</p>
+          <Link href={"/configuracoes"}>
+            <Settings width={30} height={30} className={hoverIcon} />
           </Link>
         </div>
       </section>
