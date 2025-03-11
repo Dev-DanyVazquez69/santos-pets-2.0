@@ -1,69 +1,112 @@
 import ItemVacine from "@/components/item-vacinne";
-import { Card, CardContent } from "@/components/ui/card";
-import { CheckCircle, PlusCircle, XCircle } from "lucide-react";
+import ModalDialog from "@/components/modal-dialog";
+import { Vaccine } from "@/interfaces/vaccines";
+// import addVacine from "./actions/vacine";
 
 const Vacina = () => {
 
-    const vaccines = [
-        {
-            id: 1,
-            nome: 'Hepatite B',
-            data: '10/10/2020',
-            local: 'UBS',
-            profissional: 'Dr. Fulano',
-            dose: '1ª',
-            validade: '10/10/2021',
-            status: "Aplicada",
-        },
-        {
-            id: 2,
-            nome: 'Hepatite B',
-            data: '10/10/2020',
-            local: 'UBS',
-            profissional: 'Dr. Fulano',
-            dose: '2ª',
-            validade: '10/10/2021',
-            status: "Aplicada",
-        },
-        {
-            id: 3,
-            nome: 'Hepatite B',
-            data: '10/10/2020',
-            local: 'UBS',
-            profissional: 'Dr. Fulano',
-            dose: '3ª',
-            validade: '10/10/2021',
-            status: "Aplicada",
-        },
-    ]
+  const vaccines: Vaccine[] = [
+    {
+      id: 1,
+      name: 'Hepatite B',
+      date: '10/10/2020',
+      location: 'UBS',
+      professional: 'Dr. Fulano',
+      dose: '1ª',
+      validity: '10/10/2021',
+      status: "aplicada",
+    },
+    {
+      id: 2,
+      name: 'Hepatite B',
+      date: '10/10/2020',
+      location: 'UBS',
+      professional: 'Dr. Fulano',
+      dose: '2ª',
+      validity: '10/10/2021',
+      status: "aplicada",
+    },
+    {
+      id: 3,
+      name: 'Hepatite B',
+      date: '10/10/2020',
+      location: 'UBS',
+      professional: 'Dr. Fulano',
+      dose: '3ª',
+      validity: '10/10/2021',
+      status: "pendente",
+    },
+  ]
 
-    return (
-        <section className="flex flex-col flex-grow items-center p-5 gap-10">
-            <h1 className="font-bold">Carteira de vacinação</h1>
-            <div className="w-full flex-1 overflow-y-auto max-h-[70vh] p-2 border border-gray-300 rounded-md">
-                {vaccines.map((vaccine) => (
-                    <Card key={vaccine.id} className="mb-4">
-                        <CardContent className="p-4 flex justify-between items-center">
-                            <div>
-                                <p className="text-lg font-semibold">{vaccine.nome}</p>
-                                <p className="text-sm text-gray-600">Data: {vaccine.data}</p>
-                            </div>
-                            {vaccine.status === "Aplicada" ? (
-                                <CheckCircle className="w-6 h-6 text-green-500" />
-                            ) : (
-                                <XCircle className="w-6 h-6 text-red-500" />
-                            )}
-                        </CardContent>
-                    </Card>
-                ))}
-                <ItemVacine/>
-            </div>
-            <div className="flex p-5 rounded-lg gap-3 bg-foreground text-background">
-                <p>Adicionar Vacina</p>
-                <PlusCircle className="" /> 
-            </div>
-        </section>
-    );
+  return (
+    <section className="flex flex-col flex-grow items-center p-5 gap-10">
+      <h1 className="font-bold">Carteira de vacinação</h1>
+      <div className="w-full flex-1 overflow-y-auto max-h-[70vh] p-2 rounded-md">
+
+        <ItemVacine vaccines={vaccines} />
+      </div>
+      <form action={async () => {
+        "use server"
+        console.log("foi")
+      }}>
+        <ModalDialog
+          buttomText="Adicionar vacina"
+          description="Adicionar vacina"
+          title="Vacina"
+          inputs={
+            [{
+              name: "name",
+              label: "Nome",
+              placeholder: "Nome da Vacina",
+              value: "Vacina xxx"
+            },
+            {
+              name: "date",
+              label: "Data",
+              placeholder: "Data de aplicação",
+              type: "datetime-local",
+            },
+            {
+              name: "location",
+              label: "Local",
+              placeholder: "Local de aplicação",
+            },
+            {
+              name: "professional",
+              label: "Profissional",
+              placeholder: "Nome do Profissional",
+            },
+            {
+              name: "dose",
+              label: "Dose",
+              placeholder: "Dose de aplicação",
+              type: "number"
+            },
+            {
+              name: "validity",
+              label: "Validade",
+              placeholder: "Validade da vacina",
+              type: "date"
+            },
+            {
+              name: "status",
+              label: "Aplicada",
+              placeholder: "Status da Vacina",
+              type: "radio",
+              value: "aplicada"
+            },
+            {
+              name: "status",
+              label: "pendente",
+              placeholder: "Status da Vacina",
+              type: "radio",
+              value: "pendente"
+            },
+            ]}>
+        </ModalDialog>
+      </form>
+    </section>
+  );
 }
 
 export default Vacina;

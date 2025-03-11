@@ -1,20 +1,40 @@
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
+"use client"
 
-const ItemVacine = () => {
+import { Card, CardContent } from "@/components/ui/card";
+import { Vaccine } from "@/interfaces/vaccines";
+import { CheckCircle, Download, XCircle } from "lucide-react";
+import React from "react";
+
+
+interface PropsItemVacinne {
+  vaccines: Vaccine[];
+}
+
+const ItemVacine: React.FC<PropsItemVacinne> = (props) => {
+
   return (
-    <Accordion type="single" collapsible className="w-full">
-      <AccordionItem value="item-1">
-        <AccordionTrigger className="bg-red-400">Is it animated?</AccordionTrigger>
-        <AccordionContent>
-          Yes. Its animated by default, but you can disable it if you prefer.
-        </AccordionContent>
-      </AccordionItem>
-    </Accordion>
+    <>
+      {props.vaccines.map((vaccine) => (
+        <Card key={vaccine.id} className="mb-4">
+          <CardContent className="p-4 flex justify-between items-center">
+            <div>
+              <p className="text-lg font-semibold">{vaccine.name}</p>
+              <p className="text-sm text-gray-600">Data: {vaccine.date}</p>
+            </div>
+            <div className="flex gap-2">
+              <button onClick={() => alert(`Download ${vaccine.name} (${vaccine.date})`)}>
+              <Download/>
+              </button>
+              {vaccine.status === "aplicada" ? (
+                <CheckCircle className="w-6 h-6 text-green-500" />
+              ) : (
+                <XCircle className="w-6 h-6 text-red-500" />
+              )}
+            </div>
+          </CardContent>
+        </Card>
+      ))}
+    </>
   )
 };
 
