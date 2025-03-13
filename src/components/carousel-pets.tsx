@@ -32,7 +32,7 @@ const CarouselPets: React.FC = () => {
                                     <AvatarFallback>{pet.name}</AvatarFallback>
                                 </Avatar>
                                 <h1>{pet.name}</h1>
-                                <Card className="w-full p-4 bg-foreground rounded-lg text-background shadow-md">
+                                <Card className="w-full p-4 rounded-lg shadow-md ">
                                     <CardContent className="grid grid-cols-2 gap-y-2">
                                         <span className={styleLabel}>Idade:</span> <span>{pet.idade} anos</span>
                                         <span className={styleLabel}>Sexo:</span> <span>{pet.sexo}</span>
@@ -44,8 +44,8 @@ const CarouselPets: React.FC = () => {
                         </CarouselItem>
                     ))}
                 </CarouselContent>
-                <CarouselPrevious className="bg-background text-foreground border-none" />
-                <CarouselNext className="bg-background text-foreground border-none" />
+                <CarouselPrevious className="border-none" />
+                <CarouselNext className="border-none" />
             </Carousel>
 
         </div>

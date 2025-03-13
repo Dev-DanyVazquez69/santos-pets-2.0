@@ -58,7 +58,6 @@ const Vacina = () => {
               name: "name",
               label: "Nome",
               placeholder: "Nome da Vacina",
-              value: "Vacina xxx"
             },
             {
               name: "date",
@@ -92,15 +91,11 @@ const Vacina = () => {
               name: "status",
               label: "Aplicada",
               placeholder: "Status da Vacina",
-              type: "radio",
-              value: "aplicada"
-            },
-            {
-              name: "status",
-              label: "pendente",
-              placeholder: "Status da Vacina",
-              type: "radio",
-              value: "pendente"
+              type: "select",
+              options: [
+                "aplicada",
+                "pendente"
+              ]
             },
             ]}>
         </ModalDialog>
