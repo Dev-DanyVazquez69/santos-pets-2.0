@@ -14,10 +14,11 @@ import { Input } from "./ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 
 interface ModalDialog {
-    buttomText: string,
+    children: React.ReactNode,
     title: string,
     description: string,
-    inputs: {
+    textButtomConfirm?: string,
+    inputs?: {
         name: string,
         label: string,
         type?: React.HTMLInputTypeAttribute | "select" | undefined,
@@ -27,11 +28,11 @@ interface ModalDialog {
     }[]
 }
 
-const ModalDialog: React.FC<ModalDialog> = ({ buttomText, title, description, inputs }) => {
+const ModalDialog: React.FC<ModalDialog> = ({ children, title, description, inputs, textButtomConfirm }) => {
 
     const selectInput = () => {
         return (
-            inputs.map((item, index) => (
+            inputs?.map((item, index) => (
                 <div key={index} className="flex flex-col gap-3">
                     <Label
                         htmlFor={item.name}
@@ -64,8 +65,8 @@ const ModalDialog: React.FC<ModalDialog> = ({ buttomText, title, description, in
 
     return (
         <Dialog>
-            <DialogTrigger asChild className="bg-foreground text-background">
-                <Button variant="outline">{buttomText}</Button>
+            <DialogTrigger asChild>
+                <Button variant="outline">{children}</Button>
             </DialogTrigger>
             <DialogContent className="overflow-y-auto max-h-[85vh] max-w-[90vw]">
                 <DialogHeader>
@@ -80,7 +81,7 @@ const ModalDialog: React.FC<ModalDialog> = ({ buttomText, title, description, in
                     }
                 </div>
                 <DialogFooter>
-                    <Button className="bg-foreground text-background" type="submit">Salvar</Button>
+                    <Button className="bg-foreground text-background" type="submit">{textButtomConfirm ?? "Confirmar"}</Button>
                 </DialogFooter>
             </DialogContent>
         </Dialog>

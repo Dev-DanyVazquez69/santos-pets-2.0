@@ -50,9 +50,9 @@ const Vacina = () => {
         console.log("foi")
       }}>
         <ModalDialog
-          buttomText="Adicionar vacina"
           description="Adicionar vacina"
           title="Vacina"
+          textButtomConfirm="Salvar"
           inputs={
             [{
               name: "name",
@@ -98,6 +98,7 @@ const Vacina = () => {
               ]
             },
             ]}>
+          Adicionar
         </ModalDialog>
       </form>
     </section>
