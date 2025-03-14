@@ -2,16 +2,16 @@
 
 import { Card, CardContent } from "@/components/ui/card";
 import { Vaccine } from "@/interfaces/vaccines";
-import { CheckCircle, Download, Pencil, Trash, XCircle } from "lucide-react";
+import { CheckCircle, Download, Trash, XCircle } from "lucide-react";
 import React from "react";
 import ModalDialog from "./modal-dialog";
 
 
-interface PropsItemVacinne {
+interface PropsListItem {
   vaccines: Vaccine[];
 }
 
-const ItemVacine: React.FC<PropsItemVacinne> = (props) => {
+const ListItem: React.FC<PropsListItem> = (props) => {
 
   return (
     <>
@@ -49,4 +49,4 @@ const ItemVacine: React.FC<PropsItemVacinne> = (props) => {
 };
 
 
-export default ItemVacine;
+export default ListItem;

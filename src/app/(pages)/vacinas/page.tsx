@@ -1,4 +1,4 @@
-import ItemVacine from "@/components/item-vacinne";
+import ListItem from "@/components/list-itens";
 import ModalDialog from "@/components/modal-dialog";
 import { Vaccine } from "@/interfaces/vaccines";
 // import addVacine from "./actions/vacine";
@@ -43,7 +43,7 @@ const Vacina = () => {
       <h1 className="font-bold">Carteira de vacinação</h1>
       <div className="w-full flex-1 overflow-y-auto max-h-[70vh] p-2 rounded-md">
 
-        <ItemVacine vaccines={vaccines} />
+        <ListItem vaccines={vaccines} />
       </div>
       <form action={async () => {
         "use server"
