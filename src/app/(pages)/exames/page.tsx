@@ -1,6 +1,7 @@
 import ListExams from "@/components/list-Itens/list-exams";
 import ModalDialog from "@/components/modal-dialog";
 import { Exams } from "@/interfaces/exams";
+import { CrossIcon } from "lucide-react";
 // import addVacine from "./actions/vacine";
 
 const Vacina = () => {
@@ -12,7 +13,10 @@ const Vacina = () => {
 
     return (
         <section className="flex flex-col flex-grow items-center p-5 gap-10">
-            <h1 className="font-bold">Historico de Exames</h1>
+            <div className="flex flex-col justify-center items-center gap-2">
+                <h1 className="font-bold">Historico de Exames</h1>
+                <CrossIcon />
+            </div>
             <div className="w-full flex-1 overflow-y-auto max-h-[70vh] p-2 rounded-md">
 
                 <ListExams exams={exams} />

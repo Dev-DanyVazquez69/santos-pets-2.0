@@ -13,6 +13,9 @@ export default function Home() {
       <section className="relative flex flex-col flex-grow items-center p-5 gap-10">
         <CarouselPets />
         <div className="flex justify-center items-center gap-5 fixed left-1/2 bottom-5 transform -translate-x-1/2 lg:left-10 lg:top-1/2 lg:flex-col lg:transform -translate-y-1/2 p-4 rounded-full shadow-lg border">
+          <Link href={"/"}>
+            <Cat width={30} height={30} className={hoverIcon} />
+          </Link>
           <Link href={"/vacinas"}>
             <Syringe width={30} height={30} className={hoverIcon} />
           </Link>
@@ -22,14 +25,12 @@ export default function Home() {
           <Link href={"/exames"}>
             <CrossIcon width={30} height={30} className={hoverIcon} />
           </Link>
-          <Link href={"/meus-pets"}>
-            <Cat width={30} height={30} className={hoverIcon} />
-          </Link>
-          <Link href={"/configuracoes"}>
+          <Link href={"/ajustes"}>
             <Settings width={30} height={30} className={hoverIcon} />
           </Link>
         </div>
-        <div className="border p-5 rounded-lg ">
+        <div className="flex gap-3 border p-5 rounded-lg ">
+          <p>Adicionar Pet</p>
           <PlusCircle />
         </div>
       </section>

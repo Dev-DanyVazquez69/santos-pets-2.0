@@ -1,6 +1,7 @@
 import ListVaccine from "@/components/list-Itens/list-vaccine";
 import ModalDialog from "@/components/modal-dialog";
 import { Vaccine } from "@/interfaces/vaccines";
+import { Syringe } from "lucide-react";
 // import addVacine from "./actions/vacine";
 
 const Vacina = () => {
@@ -40,7 +41,10 @@ const Vacina = () => {
 
   return (
     <section className="flex flex-col flex-grow items-center p-5 gap-10">
-      <h1 className="font-bold">Carteira de vacinação</h1>
+      <div className="flex flex-col justify-center items-center gap-2">
+        <h1 className="font-bold">Historico de Exames</h1>
+        <Syringe />
+      </div>
       <div className="w-full flex-1 overflow-y-auto max-h-[70vh] p-2 rounded-md">
 
         <ListVaccine vaccines={vaccines} />
